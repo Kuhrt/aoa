@@ -1,0 +1,26 @@
+/** Import Bootstrap functions */
+@import "~bootstrap/scss/functions";
+
+// COLORS
+$theme-colors: (
+  primary: #27ae60,
+  yellow: #fbd330,
+  darkYellow: #d8ad00,
+  black: #000,
+  white: #fff
+);
+
+// TYPE
+$font-futura: Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+
+// MARGINS
+$page-margin: 2.5rem;
+
+// BREAKPOINTS
+$breakpoint-tablet: 600px;
+$breakpoint-tablet-large: 900px;
+$breakpoint-desktop: 1200px;
+$breakpoint-desktop-med: 1600px;
+$breakpoint-desktop-large: 1800px;
+$breakpoint-desktop-xl: 2000px;
+$breakpoint-desktop-huge: 2500px;

@@ -1,0 +1,31 @@
+.home__about {
+  position: relative;
+  padding-top: 7.5rem;
+
+  .home-about__image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 16.5rem;
+  }
+
+  .home-about__text {
+    padding: 3.75rem $page-margin 3.75rem;
+
+    p:last-child {
+      margin-top: 4.625rem;
+
+      a {
+        color: inspect(map-get($theme-colors, black));
+        font-size: 1.438rem;
+        font-weight: 700;
+        letter-spacing: 0.063rem;
+
+        &:hover {
+          color: inspect(map-get($theme-colors, white));
+        }
+      }
+    }
+  }
+}

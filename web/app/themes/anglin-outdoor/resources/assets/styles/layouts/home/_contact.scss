@@ -1,0 +1,37 @@
+.home__contact {
+  position: relative;
+  min-height: 75vh;
+
+  .home-contact__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 $page-margin 4.75rem;
+
+    & > *:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: inspect(map-get($theme-colors, black));
+      font-size: 4.063rem;
+      line-height: 4.063rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      a {
+        color: inspect(map-get($theme-colors, black));
+        font-size: 1.125rem;
+        font-weight: 500;
+        letter-spacing: 0.313rem;
+        line-height: 1.875rem;
+
+        &:hover {
+          color: inspect(map-get($theme-colors, white));
+        }
+      }
+    }
+  }
+}

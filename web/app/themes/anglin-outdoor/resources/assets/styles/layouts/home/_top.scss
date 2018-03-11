@@ -1,0 +1,71 @@
+.home__top {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding-left: $page-margin;
+  overflow: hidden;
+  z-index: 1;
+
+  .home-top__text {
+    position: absolute;
+    bottom: 0;
+    left: $page-margin;
+    padding-bottom: 4.375rem;
+    z-index: 2;
+
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+
+    h1 {
+      margin-bottom: 1.25rem;
+    }
+
+    p {
+      font-size: 0.625rem;
+      letter-spacing: 0.438rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .home-top__mountains {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+
+    img {
+      position: absolute;
+
+      &.home-top__mountain1 {
+        bottom: -110%;
+        left: -103%;
+        width: 250%;
+        z-index: 2;
+      }
+
+      &.home-top__mountain2 {
+        bottom: -53%;
+        left: -40%;
+        width: 175%;
+        z-index: 1;
+      }
+
+      &.home-top__mountain3 {
+        bottom: -90%;
+        left: -61%;
+        width: 250%;
+        z-index: 4;
+      }
+
+      &.home-top__mountain4 {
+        bottom: -79%;
+        left: -44%;
+        width: 250%;
+        z-index: 3;
+      }
+    }
+  }
+}

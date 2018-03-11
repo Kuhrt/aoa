@@ -1,0 +1,50 @@
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: inspect(map-get($theme-colors, yellow));
+  width: 100%;
+  padding: $page-margin $page-margin 1rem;
+  z-index: 10;
+
+  .brand {
+    position: absolute;
+    top: $page-margin;
+    right: $page-margin;
+    color: inspect(map-get($theme-colors, black));
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1;
+
+    &:hover {
+      color: inspect(map-get($theme-colors, white));
+    }
+  }
+
+  .nav {
+    display: block;
+
+    li {
+      display: block;
+      line-height: 1;
+      margin-bottom: 1rem;
+
+      a {
+        color: inspect(map-get($theme-colors, black));
+        font-size: 1.438rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.063rem;
+
+        &.active {
+          color: inspect(map-get($theme-colors, white));
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
