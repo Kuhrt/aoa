@@ -47,7 +47,7 @@
 
   <section class="home__contact" id="contact">
     @php
-      $contact_post = get_post(11);
+      $contact_post = get_post(7);
       $contact_content = $contact_post->post_content;
       $contact_content = apply_filters('the_content', $contact_content);
     @endphp

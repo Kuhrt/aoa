@@ -1,12 +1,16 @@
 .home__contact {
   position: relative;
-  min-height: 75vh;
+  min-height: 95vh;
 
   .home-contact__text {
     position: absolute;
     bottom: 0;
     left: 0;
     padding: 0 $page-margin 4.75rem;
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: 0 $page-margin-tablet 4.75rem;
+    }
 
     & > *:last-child {
       padding-bottom: 0;
@@ -18,6 +22,16 @@
       font-size: 4.063rem;
       line-height: 4.063rem;
       margin-bottom: 2rem;
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: 5.3rem;
+        line-height: 5.3rem;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        font-size: 6.688rem;
+        line-height: 6.688rem;
+      }
     }
 
     p {
@@ -27,6 +41,17 @@
         font-weight: 500;
         letter-spacing: 0.313rem;
         line-height: 1.875rem;
+
+        @media (min-width: $breakpoint-tablet) {
+          font-size: 1.275rem;
+          letter-spacing: 0.46rem;
+          line-height: 2rem;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          font-size: 1.438rem;
+          letter-spacing: 0.625rem;
+        }
 
         &:hover {
           color: inspect(map-get($theme-colors, white));

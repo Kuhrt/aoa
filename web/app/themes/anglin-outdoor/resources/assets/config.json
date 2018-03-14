@@ -9,7 +9,7 @@
     ]
   },
   "publicPath": "/app/themes/anglin-outdoor",
-  "devUrl": "http://anglingoutdoor.dev",
+  "devUrl": "http://anglinoutdoor.test",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [

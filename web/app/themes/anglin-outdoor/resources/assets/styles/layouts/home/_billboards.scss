@@ -1,6 +1,10 @@
 .home__billboards {
   position: relative;
-  padding: $page-margin;
+  padding: 6rem $page-margin $page-margin;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 12rem $page-margin-tablet $page-margin-tablet;
+  }
 
   .home-billboards__mobile-hint {
     color: inspect(map-get($theme-colors, white));

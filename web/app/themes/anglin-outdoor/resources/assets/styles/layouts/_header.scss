@@ -2,10 +2,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: inspect(map-get($theme-colors, yellow));
+  background-color: transparent;
   width: 100%;
   padding: $page-margin $page-margin 1rem;
   z-index: 10;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $page-margin-tablet $page-margin-tablet 1rem;
+  }
 
   .brand {
     position: absolute;
@@ -16,6 +20,11 @@
     font-weight: 500;
     text-transform: uppercase;
     line-height: 1;
+
+    @media (min-width: $breakpoint-tablet) {
+      top: $page-margin-tablet;
+      right: $page-margin-tablet;
+    }
 
     &:hover {
       color: inspect(map-get($theme-colors, white));
@@ -30,12 +39,28 @@
       line-height: 1;
       margin-bottom: 1rem;
 
+      @media (min-width: $breakpoint-tablet) {
+        margin-bottom: 1.5rem;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin-bottom: 2rem;
+      }
+
       a {
         color: inspect(map-get($theme-colors, black));
         font-size: 1.438rem;
         font-weight: 700;
         line-height: 1;
         letter-spacing: 0.063rem;
+
+        @media (min-width: $breakpoint-tablet) {
+          font-size: 1.9rem;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          font-size: 2.438rem;
+        }
 
         &.active {
           color: inspect(map-get($theme-colors, white));
