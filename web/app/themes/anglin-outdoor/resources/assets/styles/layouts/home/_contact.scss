@@ -12,6 +12,10 @@
       padding: 0 $page-margin-tablet 4.75rem;
     }
 
+    @media (min-width: $breakpoint-desktop) {
+      padding: 0 $page-margin-desktop 4.75rem;
+    }
+
     & > *:last-child {
       padding-bottom: 0;
       margin-bottom: 0;

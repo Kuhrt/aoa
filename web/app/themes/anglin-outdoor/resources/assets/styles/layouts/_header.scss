@@ -11,6 +11,10 @@
     padding: $page-margin-tablet $page-margin-tablet 1rem;
   }
 
+  @media (min-width: $breakpoint-desktop) {
+    padding: $page-margin-desktop $page-margin-desktop 1rem;
+  }
+
   .brand {
     position: absolute;
     top: $page-margin;
@@ -20,14 +24,25 @@
     font-weight: 500;
     text-transform: uppercase;
     line-height: 1;
+    width: 4rem;
 
     @media (min-width: $breakpoint-tablet) {
       top: $page-margin-tablet;
       right: $page-margin-tablet;
     }
 
+    @media (min-width: $breakpoint-desktop) {
+      top: $page-margin-desktop;
+      right: $page-margin-desktop;
+      width: 6rem;
+    }
+
     &:hover {
       color: inspect(map-get($theme-colors, white));
+    }
+
+    img {
+      width: 100%;
     }
   }
 
@@ -62,8 +77,10 @@
           font-size: 2.438rem;
         }
 
-        &.active {
+        &.active,
+        &:hover {
           color: inspect(map-get($theme-colors, white));
+          text-decoration: none;
         }
       }
 

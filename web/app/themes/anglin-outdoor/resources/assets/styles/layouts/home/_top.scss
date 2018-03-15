@@ -21,12 +21,41 @@
       left: $page-margin-tablet;
     }
 
+    @media (min-width: $breakpoint-desktop) {
+      left: $page-margin-desktop;
+    }
+
+    @media (min-width: $breakpoint-desktop-large) {
+      padding-bottom: 6rem;
+    }
+
     & > *:last-child {
       margin-bottom: 0;
     }
 
     h1 {
       margin-bottom: 1.25rem;
+
+      @media (min-width: $breakpoint-tablet-large) and (max-height: 800px) {
+        padding-right: 30%;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        padding-right: 30%;
+        margin-bottom: 2.5rem;
+      }
+
+      @media (min-width: 1500px) {
+        padding-right: 40%;
+      }
+
+      @media (min-width: $breakpoint-desktop-large) {
+        padding-right: 55%;
+      }
+
+      @media (min-width: $breakpoint-desktop-xl) {
+        padding-right: 65%;
+      }
     }
 
     p {
@@ -68,6 +97,52 @@
           left: -78%;
           width: 200%;
         }
+
+        @media (min-width: $breakpoint-tablet-large) and (max-height: 800px) {
+          right: 0%;
+          bottom: -117%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          right: 0%;
+          bottom: -117%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 900px) {
+          bottom: -145%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 800px) {
+          bottom: -155%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 900px) {
+          bottom: -165%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 800px) {
+          bottom: -185%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) {
+          bottom: -150%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) and (max-height: 900px) {
+          bottom: -170%;
+        }
+
+        @media (min-width: $breakpoint-desktop-large) and (max-height: 1100px) {
+          bottom: -160%;
+        }
+
+        @media (min-width: $breakpoint-desktop-xl) {
+          bottom: -160%;
+        }
       }
 
       &.home-top__mountain2 {
@@ -80,6 +155,52 @@
           bottom: -70%;
           left: -25%;
           width: 150%;
+        }
+
+        @media (min-width: $breakpoint-tablet-large) and (max-height: 800px) {
+          right: -20%;
+          bottom: -90%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          right: -16%;
+          bottom: -90%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 900px) {
+          bottom: -118%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 800px) {
+          bottom: -128%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 900px) {
+          bottom: -138%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 800px) {
+          bottom: -158%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) {
+          bottom: -123%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) and (max-height: 900px) {
+          bottom: -143%;
+        }
+
+        @media (min-width: $breakpoint-desktop-large) and (max-height: 1100px) {
+          bottom: -143%;
+        }
+
+        @media (min-width: $breakpoint-desktop-xl) {
+          bottom: -133%;
         }
       }
 
@@ -94,6 +215,52 @@
           left: -25%;
           width: 175%;
         }
+
+        @media (min-width: $breakpoint-tablet-large) and (max-height: 800px) {
+          right: -30%;
+          bottom: -77%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          right: -27%;
+          bottom: -77%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 900px) {
+          bottom: -105%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 800px) {
+          bottom: -115%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 900px) {
+          bottom: -125%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 800px) {
+          bottom: -145%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) {
+          bottom: -110%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) and (max-height: 900px) {
+          bottom: -130%;
+        }
+
+        @media (min-width: $breakpoint-desktop-large) and (max-height: 1100px) {
+          bottom: -130%;
+        }
+
+        @media (min-width: $breakpoint-desktop-xl) {
+          bottom: -120%;
+        }
       }
 
       &.home-top__mountain4 {
@@ -106,6 +273,52 @@
           bottom: -65%;
           left: -6%;
           width: 175%;
+        }
+
+        @media (min-width: $breakpoint-tablet-large) and (max-height: 800px) {
+          right: -42%;
+          bottom: -65%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          right: -42%;
+          bottom: -65%;
+          left: auto;
+          width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 900px) {
+          bottom: -93%;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 800px) {
+          bottom: -103%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 900px) {
+          bottom: -113%;
+        }
+
+        @media (min-width: 1500px) and (max-height: 800px) {
+          bottom: -133%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) {
+          bottom: -98%;
+        }
+
+        @media (min-width: $breakpoint-desktop-med) and (max-height: 900px) {
+          bottom: -118%;
+        }
+
+        @media (min-width: $breakpoint-desktop-large) and (max-height: 1100px) {
+          bottom: -118%;
+        }
+
+        @media (min-width: $breakpoint-desktop-xl) {
+          bottom: -108%;
         }
       }
     }
