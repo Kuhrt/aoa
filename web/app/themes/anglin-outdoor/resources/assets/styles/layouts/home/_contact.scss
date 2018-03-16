@@ -59,6 +59,7 @@
 
         &:hover {
           color: inspect(map-get($theme-colors, white));
+          text-decoration: none;
         }
       }
     }

@@ -1,9 +1,13 @@
 .home__billboards {
-  position: relative;
   padding: 6rem $page-margin $page-margin;
 
   @media (min-width: $breakpoint-tablet) {
     padding: 12rem $page-margin-tablet $page-margin-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    position: relative;
+    padding: 12rem $page-margin-desktop $page-margin-desktop;
   }
 
   .home-billboards__mobile-hint {
@@ -66,5 +70,55 @@
 
   ul li a:hover {
     color: inspect(map-get($theme-colors, black));
+  }
+
+  .home-billboards__map {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+
+    .home-billboards-map__header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      width: 100%;
+      padding: $page-margin $page-margin 0;
+      z-index: 2;
+
+      a {
+        display: inline-block;
+        color: inspect(map-get($theme-colors, yellow));
+        font-size: 1.438rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.063rem;
+        padding: 0;
+        margin: 0;
+
+        &:hover {
+          display: inline-block;
+          color: inspect(map-get($theme-colors, white));
+          text-decoration: none;
+        }
+      }
+
+      .home-billboards-map__logo {
+        width: 3.313rem;
+        margin-top: 0.25rem;
+      }
+    }
+
+    .home-billboards-map__map {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
   }
 }
