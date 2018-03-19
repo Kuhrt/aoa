@@ -17,10 +17,10 @@
   @endwhile
   <section class="home__about" id="about">
     @php
-      $about_post = get_post(7);
+      $about_post = get_post(9);
       $about_content = $about_post->post_content;
       $about_content = apply_filters('the_content', $about_content);
-      $about_image = get_the_post_thumbnail_url(7, 'large');
+      $about_image = get_the_post_thumbnail_url(9, 'large');
     @endphp
     <div class="home-about__image">
       <div class="home-about-image__image" style="background-image:url('{{ $about_image }}');"></div>
@@ -58,7 +58,7 @@
 
   <section class="home__contact" id="contact">
     @php
-      $contact_post = get_post(10);
+      $contact_post = get_post(7);
       $contact_content = $contact_post->post_content;
       $contact_content = apply_filters('the_content', $contact_content);
     @endphp

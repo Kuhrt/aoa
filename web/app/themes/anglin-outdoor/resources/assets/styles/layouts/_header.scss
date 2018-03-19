@@ -37,6 +37,10 @@
       width: 6rem;
     }
 
+    @media (min-width: $breakpoint-desktop) and (max-height: 899px) {
+      width: 4.5rem;
+    }
+
     &:hover {
       color: inspect(map-get($theme-colors, white));
     }
@@ -62,6 +66,10 @@
         margin-bottom: 2rem;
       }
 
+      @media (min-width: $breakpoint-desktop) and (max-height: 899px) {
+        margin-bottom: 1.5rem;
+      }
+
       a {
         color: inspect(map-get($theme-colors, black));
         font-size: 1.438rem;
@@ -75,6 +83,10 @@
 
         @media (min-width: $breakpoint-desktop) {
           font-size: 2.438rem;
+        }
+
+        @media (min-width: $breakpoint-desktop) and (max-height: 899px) {
+          font-size: 1.75rem;
         }
 
         &.active,
