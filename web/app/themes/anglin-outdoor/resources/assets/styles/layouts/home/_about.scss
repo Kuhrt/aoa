@@ -1,9 +1,9 @@
 .home__about {
   position: relative;
-  padding-top: 7.5rem;
+  padding-top: 10rem;
 
   @media (min-width: $breakpoint-tablet) {
-    padding-top: 12rem;
+    padding-top: 16rem;
   }
 
   @media (min-width: $breakpoint-desktop) {
@@ -11,31 +11,11 @@
     overflow: hidden;
   }
 
-  &::after {
-    content: '';
-
-    @media (min-width: $breakpoint-desktop) {
-      position: absolute;
-      top: -60%;
-      left: 60%;
-      transform: rotate(-25deg);
-      background-color: inspect(map-get($theme-colors, white));
-      height: 150%;
-      width: 100%;
-      z-index: 2;
-    }
-
-    @media (min-width: $breakpoint-desktop-large) {
-      left: 50%;
-    }
-
-    @media (min-width: $breakpoint-desktop-xl) {
-      top: -75%;
-    }
-  }
-
   .home-about__image {
     position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     height: 16.5rem;
 
@@ -45,49 +25,26 @@
 
     @media (min-width: $breakpoint-desktop) {
       position: absolute;
-      top: 45%;
-      right: -48%;
-      width: 60rem;
-      height: 50rem;
-      transform: translateY(-50%) rotate(45deg) skew(-15deg, 0deg);
+      top: 0;
+      right: -0;
+      width: 50%;
+      height: 100%;
       overflow: hidden;
       z-index: 3;
     }
 
-    @media (min-width: $breakpoint-desktop) and (max-height: 900px) {
-      right: -40%;
-    }
-
-    @media (min-width: $breakpoint-desktop) and (max-height: 800px) {
-      right: -40%;
-    }
-
-    @media (min-width: 1500px) and (max-height: 900px) {
-      right: -25%;
-    }
-
-    @media (min-width: $breakpoint-desktop-med) {
-      right: -21%;
-    }
-
-    @media (min-width: $breakpoint-desktop-large) {
-      right: -15%;
-      width: 70rem;
-      height: 60rem;
-    }
-
-    .home-about-image__image {
-      position: relative;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 100%;
+    &::before {
+      content: '';
 
       @media (min-width: $breakpoint-desktop) {
-        transform: translate(-20%, -20%) rotate(-58deg) skew(15deg, 0deg);
-        width: 150%;
-        height: 150%;
+        position: absolute;
+        top: 0%;
+        left: -20%;
+        transform: rotate(-10deg);
+        background-color: inspect(map-get($theme-colors, yellow));
+        width: 40%;
+        height: 120%;
+        z-index: 1;
       }
     }
   }
