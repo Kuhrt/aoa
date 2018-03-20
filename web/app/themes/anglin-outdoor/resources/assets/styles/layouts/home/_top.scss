@@ -61,9 +61,14 @@
     }
 
     p {
-      font-size: 0.625rem;
-      letter-spacing: 0.4rem;
+      font-size: 0.5rem;
+      letter-spacing: 0.36rem;
       text-transform: uppercase;
+
+      @media (min-width: 414px) {
+        font-size: 0.625rem;
+        letter-spacing: 0.4rem;
+      }
 
       @media (min-width: $breakpoint-tablet) {
         font-size: 1rem;

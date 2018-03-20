@@ -56,7 +56,7 @@ export default {
           removeActiveClass();
         }
       },
-      offset: 10,
+      offset: 20,
     });
     new Waypoint({
       element: $('#billboards'),
@@ -75,7 +75,7 @@ export default {
           $('nav ul li a[href=\'#about\']').addClass('active');
         }
       },
-      offset: 10,
+      offset: 20,
     });
     new Waypoint({
       element: $('#contact'),
@@ -94,7 +94,7 @@ export default {
           $('nav ul li a[href=\'#billboards\']').addClass('active');
         }
       },
-      offset: 10,
+      offset: 20,
     });
 
     // Smooth Scrolling thanks to CSS-Tricks
@@ -141,6 +141,269 @@ export default {
     //   maxTilt    : 5,
     //   perspective: 1000,
     // });
+
+    // BILLBOARD MAP
+    // Building the map
+    var mapZoom;
+    if ($(window).width() < 700) {
+      mapZoom = 9;
+    } else if ($(window).width() >= 700 && $(window).width() < 1800) {
+      mapZoom = 10;
+    } else {
+      mapZoom = 11;
+    }
+
+    const billboardsMap = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 33.6872342, lng: -102.0668504},
+        zoom: mapZoom,
+        disableDefaultUI: true,
+        styles: [
+                  {
+                    "elementType": "geometry",
+                    "stylers": [
+                      {
+                        "color": "#212121"
+                      }
+                    ]
+                  },
+                  {
+                    "elementType": "labels.icon",
+                    "stylers": [
+                      {
+                        "visibility": "off"
+                      }
+                    ]
+                  },
+                  {
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#757575"
+                      }
+                    ]
+                  },
+                  {
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                      {
+                        "color": "#212121"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "administrative",
+                    "elementType": "geometry",
+                    "stylers": [
+                      {
+                        "color": "#757575"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "administrative.country",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#9e9e9e"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "administrative.land_parcel",
+                    "stylers": [
+                      {
+                        "visibility": "off"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "administrative.locality",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#bdbdbd"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "poi",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#757575"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [
+                      {
+                        "color": "#181818"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#616161"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                      {
+                        "color": "#1b1b1b"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "road",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                      {
+                        "color": "#2c2c2c"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "road",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#8a8a8a"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [
+                      {
+                        "color": "#373737"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [
+                      {
+                        "color": "#3c3c3c"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "road.highway.controlled_access",
+                    "elementType": "geometry",
+                    "stylers": [
+                      {
+                        "color": "#4e4e4e"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "road.local",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#616161"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "transit",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#757575"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [
+                      {
+                        "color": "#000000"
+                      }
+                    ]
+                  },
+                  {
+                    "featureType": "water",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                      {
+                        "color": "#3d3d3d"
+                      }
+                    ]
+                  }
+                ]
+      });
+
+    // Creating markers
+    const markerIcon = {
+            url:'/app/themes/anglin-outdoor/dist/images/circle.png',
+            anchor: new google.maps.Point(10, 10),
+          };
+    var markerInfoContent = `<div class="home-billboards-map__specs">
+        <h3>Idalou, Tx</h3>
+        <ul>
+          <li><span>Location:</span> SE Corner of HWYS 82/62 &amp; Main St.</li>
+          <li><span>Size:</span> 6'x12'</li>
+          <li><span>Impressions:</span> 68,500 Weekly</li>
+          <li><span>Lights:</span> No</li>
+        </ul>
+      </div>`;
+    var markerInfoWindow = new google.maps.InfoWindow({
+      content: markerInfoContent,
+    });
+
+    const billboard1 = new google.maps.Marker({
+      position: {lat: 33.9039, lng: -102.3196},
+      title: 'ATLA1',
+      icon: markerIcon,
+    });
+    const billboard2 = new google.maps.Marker({
+      position: {lat: 33.9041, lng: -102.3182},
+      title: 'ATLA2',
+      icon: markerIcon,
+    });
+    const billboard3 = new google.maps.Marker({
+      position: {lat: 33.9227, lng: -102.3249},
+      title: 'ATLA3',
+      icon: markerIcon,
+    });
+    const billboard4 = new google.maps.Marker({
+      position: {lat: 33.6665, lng: -101.6799},
+      title: 'ATLU1',
+      icon: markerIcon,
+    });
+    billboard4.addListener('click', function() {
+      markerInfoWindow.open(billboardsMap, billboard4);
+    });
+    const billboard5 = new google.maps.Marker({
+      position: {lat: 33.6443, lng: -101.9407},
+      title: 'ATLU2',
+      icon: markerIcon,
+    });
+    const billboard6 = new google.maps.Marker({
+      position: {lat: 33.4214, lng: -101.6442},
+      title: 'ATLU3',
+      icon: markerIcon,
+    });
+
+    // Setting markers to the map
+    billboard1.setMap(billboardsMap);
+    billboard2.setMap(billboardsMap);
+    billboard3.setMap(billboardsMap);
+    billboard4.setMap(billboardsMap);
+    billboard5.setMap(billboardsMap);
+    billboard6.setMap(billboardsMap);
   },
 };
 
