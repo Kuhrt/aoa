@@ -56,6 +56,7 @@ export default {
           removeActiveClass();
         }
       },
+      offset: 10,
     });
     new Waypoint({
       element: $('#billboards'),
@@ -74,6 +75,7 @@ export default {
           $('nav ul li a[href=\'#about\']').addClass('active');
         }
       },
+      offset: 10,
     });
     new Waypoint({
       element: $('#contact'),
@@ -92,6 +94,7 @@ export default {
           $('nav ul li a[href=\'#billboards\']').addClass('active');
         }
       },
+      offset: 10,
     });
 
     // Smooth Scrolling thanks to CSS-Tricks
@@ -134,10 +137,10 @@ export default {
   },
   finalize() {
     // JavaScript to be fired on the home page, after the init JS
-    $('.home__top').tilt({
-      maxTilt    : 5,
-      perspective: 1000,
-    });
+    // $('.home__top').tilt({
+    //   maxTilt    : 5,
+    //   perspective: 1000,
+    // });
   },
 };
 

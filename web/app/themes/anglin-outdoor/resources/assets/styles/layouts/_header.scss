@@ -50,7 +50,9 @@
       transition: all 0.3s;
 
       &.billboard {
-        filter: invert(1);
+        @media (min-width: $breakpoint-desktop) {
+          filter: invert(1);
+        }
       }
     }
   }

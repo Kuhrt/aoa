@@ -7,8 +7,13 @@
   }
 
   @media (min-width: $breakpoint-desktop) {
+    min-height: 100vh;
     padding-top: 16rem;
     overflow: hidden;
+  }
+
+  @media (min-width: $breakpoint-desktop-large) {
+    padding-top: 20rem;
   }
 
   .home-about__image {

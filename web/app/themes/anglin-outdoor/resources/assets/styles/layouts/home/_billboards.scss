@@ -15,6 +15,10 @@
     padding: 20rem $page-margin-desktop $page-margin-desktop;
   }
 
+  @media (min-width: $breakpoint-desktop-xl) {
+    padding: 25rem $page-margin-desktop $page-margin-desktop;
+  }
+
   .home-billboards__mobile-hint {
     color: inspect(map-get($theme-colors, white));
     font-size: 2.438rem;
@@ -61,7 +65,7 @@
     @media (min-width: $breakpoint-desktop) {
       font-size: 1.438rem;
       letter-spacing: 0.048rem;
-      max-width: 13rem;
+      max-width: 15rem;
       z-index: 2;
     }
   }
