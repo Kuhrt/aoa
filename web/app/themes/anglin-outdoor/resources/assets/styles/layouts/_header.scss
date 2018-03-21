@@ -12,49 +12,9 @@
   }
 
   @media (min-width: $breakpoint-desktop) {
+    display: inline-block;
+    width: auto;
     padding: $page-margin-desktop $page-margin-desktop 1rem;
-  }
-
-  .brand {
-    position: absolute;
-    top: $page-margin;
-    right: $page-margin;
-    color: inspect(map-get($theme-colors, black));
-    font-size: 1.125rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    line-height: 1;
-    width: 4rem;
-
-    @media (min-width: $breakpoint-tablet) {
-      top: $page-margin-tablet;
-      right: $page-margin-tablet;
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      top: $page-margin-desktop;
-      right: $page-margin-desktop;
-      width: 6rem;
-    }
-
-    @media (min-width: $breakpoint-desktop) and (max-height: 899px) {
-      width: 4.5rem;
-    }
-
-    &:hover {
-      color: inspect(map-get($theme-colors, white));
-    }
-
-    img {
-      width: 100%;
-      transition: all 0.3s;
-
-      &.billboard {
-        @media (min-width: $breakpoint-desktop) {
-          filter: invert(1);
-        }
-      }
-    }
   }
 
   .nav {
@@ -105,6 +65,49 @@
 
       &:last-child {
         margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.brand {
+  position: fixed;
+  top: $page-margin;
+  right: $page-margin;
+  color: inspect(map-get($theme-colors, black));
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1;
+  width: 4rem;
+  z-index: 10;
+
+  @media (min-width: $breakpoint-tablet) {
+    top: $page-margin-tablet;
+    right: $page-margin-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    top: $page-margin-desktop;
+    right: $page-margin-desktop;
+    width: 6rem;
+  }
+
+  @media (min-width: $breakpoint-desktop) and (max-height: 899px) {
+    width: 4.5rem;
+  }
+
+  &:hover {
+    color: inspect(map-get($theme-colors, white));
+  }
+
+  img {
+    width: 100%;
+    transition: all 0.3s;
+
+    &.billboard {
+      @media (min-width: $breakpoint-desktop) {
+        filter: invert(1);
       }
     }
   }

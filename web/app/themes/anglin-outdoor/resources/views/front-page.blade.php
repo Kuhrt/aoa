@@ -36,11 +36,12 @@
     </p>
     <h2>Available Locations</h2>
     <ul>
-      <li><a href="#">Lubbock (5)</a></li>
-      <li><a href="#">Shallowater (1)</a></li>
-      <li><a href="#">Idalou (3)</a></li>
-      <li><a href="#">Reese Center (2)</a></li>
-      <li><a href="#">Wolfforth (1)</a></li>
+      <li><a href="#">Idalou (1)</a></li>
+      <li><a href="#">Lamesa (1)</a></li>
+      <li><a href="#">Littlefield (3)</a></li>
+      <li><a href="#">Lubbock (1)</a></li>
+      <li><a href="#">Slaton (1)</a></li>
+      <li><a href="#">Tahoka (1)</a></li>
     </ul>
     <a href="http://www.lookoutdoor.biz/">Look advertising partner website.</a>
     <div class="home-billboards__map">

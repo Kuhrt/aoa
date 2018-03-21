@@ -147,10 +147,10 @@ export default {
     var mapZoom;
     if ($(window).width() < 700) {
       mapZoom = 9;
-    } else if ($(window).width() >= 700 && $(window).width() < 1800) {
-      mapZoom = 10;
+    // } else if ($(window).width() >= 700 && $(window).width() < 1800) {
+    //   mapZoom = 10;
     } else {
-      mapZoom = 11;
+      mapZoom = 10;
     }
 
     const billboardsMap = new google.maps.Map(document.getElementById('map'), {
@@ -477,75 +477,133 @@ export default {
         impressions: 20489
       }
     ];
+    // Initally adding markers to map
+    let currentMarkers = addBillboardMarkers(billboardsMap, billboards);
 
-    // Going through billboards array and creating markers
-    $.each(billboards, (index, value) => {
-      // Setting the map icon
-      const markerIcon = {
-              url:'/app/themes/anglin-outdoor/dist/images/circle.png',
-              anchor: new google.maps.Point(10, 10),
-            };
+    buildAvailableLocations(billboards);
 
-      // Creating the content for the info window
-      let markerInfoContent = `<div class="home-billboards-map__specs">`;
-      if (value.image !== '' || value.image !== null) {
-        markerInfoContent += `<img src="/app/themes/anglin-outdoor/dist/images/billboards/${value.image}" alt="${value.name}" />`;
-      }
-      markerInfoContent += `<h3>${value.city}, ${value.state}</h3>`;
-      if (value.market !== '' || value.market !== null) {
-        markerInfoContent += `<p>${value.market}</p>`;
-      }
-      markerInfoContent += `<ul>`;
-      markerInfoContent += `<li><span>Location:</span> ${value.location}</li>`;
-      if (value.gps[0] !== '' || value.gps[0] !== null) {
-        markerInfoContent += `<li><span>GPS:</span> ${value.gps[0]}, ${value.gps[1]}</li>`;
-      }
-      markerInfoContent += `<li><span>Size:</span> ${value.size}</li>`;
-      markerInfoContent += `<li><span>Faces:</span> ${value.faces}</li>`;
-      markerInfoContent += `<li><span>Impressions:</span> ${value.impressions} Weekly</li>`;
-      markerInfoContent += `<li><span>Illuminated:</span> ${value.illuminated}</li>`;
-      markerInfoContent += `</ul>`;
-      markerInfoContent += `<div class="home-billboards-map-specs__links">`;
-      markerInfoContent += `<a href="mailto:shawn@anglinoutdoor.com?subject=Billboard ${value.name} in ${value.city}, ${value.state}">Email</a>`;
-      markerInfoContent += `<a href="tel:8061234567">Call</a>`;
-      markerInfoContent += `</div>`;
-      markerInfoContent += `</div>`;
+    $('.home__billboards ul li a').on('click', function(e) {
+      e.preventDefault();
 
-      // Appending the content to the info window
-      const markerInfoWindow = new google.maps.InfoWindow({
-        content: markerInfoContent,
-      });
-
-      // Creating the marker for the map
-      const billboardMarker = new google.maps.Marker({
-        position: {lat: value.lat, lng: value.lng},
-        title: value.name,
-        icon: markerIcon,
-      });
-
-      // Putting the marker on the map
-      billboardMarker.setMap(billboardsMap);
-
-      // Adding the info window to the marker
-      billboardMarker.addListener('click', function() {
-        // Opening the popup window
-        markerInfoWindow.open(billboardsMap, billboardMarker);
-
-        // Hiding the maps header
-        $('.home-billboards-map__header').addClass('hidden');
-
-        $('.gm-style > div > div > div > div > div > img').on('click', function() {
-          // Showing the map header
-          $('.home-billboards-map__header').removeClass('hidden');
-        });
-      });
+      removeBillboardMarkers(currentMarkers);
     });
   },
 };
 
-
+/**
+ * Removes the active class from the navigation
+ *
+ */
 function removeActiveClass() {
   $('nav ul li a[href=\'#about\']').removeClass('active');
   $('nav ul li a[href=\'#billboards\']').removeClass('active');
   $('nav ul li a[href=\'#contact\']').removeClass('active');
+}
+
+
+/**
+ * Adds billboard markers to the map
+ *
+ * @param {Object} map        - Google Maps map object
+ * @param {Array}  billboards - An array of billboard objects
+ * @return {Array} allMarkers - An array of Google Maps Markers
+ */
+function addBillboardMarkers(map, billboards) {
+  let allMarkers = [];
+
+  // Going through billboards array and creating markers
+  $.each(billboards, (index, value) => {
+    // Setting the map icon
+    const markerIcon = {
+            url:'/app/themes/anglin-outdoor/dist/images/circle.png',
+            anchor: new google.maps.Point(10, 10),
+          };
+
+    // Creating the content for the info window
+    let markerInfoContent = `<div class="home-billboards-map__specs">`;
+    if (value.image !== '' && value.image !== null) {
+      markerInfoContent += `<img src="/app/themes/anglin-outdoor/dist/images/billboards/${value.image}" alt="${value.name}" />`;
+    }
+    markerInfoContent += `<h3>${value.city}, ${value.state}</h3>`;
+    if (value.market !== '' && value.market !== null) {
+      markerInfoContent += `<p>${value.market}</p>`;
+    }
+    markerInfoContent += `<ul>`;
+    markerInfoContent += `<li><span>Location:</span> ${value.location}</li>`;
+    if (value.gps.length !== 0) {
+      markerInfoContent += `<li><span>GPS:</span> ${value.gps[0]}, ${value.gps[1]}</li>`;
+    }
+    markerInfoContent += `<li><span>Size:</span> ${value.size}</li>`;
+    markerInfoContent += `<li><span>Faces:</span> ${value.faces}</li>`;
+    markerInfoContent += `<li><span>Impressions:</span> ${value.impressions} Weekly</li>`;
+    markerInfoContent += `<li><span>Illuminated:</span> ${value.illuminated}</li>`;
+    markerInfoContent += `</ul>`;
+    markerInfoContent += `<div class="home-billboards-map-specs__links">`;
+    markerInfoContent += `<a href="mailto:shawn@anglinoutdoor.com?subject=Billboard ${value.name} in ${value.city}, ${value.state}">Email</a>`;
+    markerInfoContent += `<a href="tel:8061234567">Call</a>`;
+    markerInfoContent += `</div>`;
+    markerInfoContent += `</div>`;
+
+    // Appending the content to the info window
+    const markerInfoWindow = new google.maps.InfoWindow({
+      content: markerInfoContent,
+    });
+
+    // Creating the marker for the map
+    const billboardMarker = new google.maps.Marker({
+      position: {lat: value.lat, lng: value.lng},
+      title: value.name,
+      icon: markerIcon,
+      animation: google.maps.Animation.DROP,
+    });
+
+    // Putting the marker on the map
+    billboardMarker.setMap(map);
+
+    // Adding the marker to the allMarkers array
+    allMarkers.push(billboardMarker);
+
+    // Adding the info window to the marker
+    billboardMarker.addListener('click', function() {
+      // Opening the popup window
+      markerInfoWindow.open(map, billboardMarker);
+
+      // Hiding the maps header
+      $('.home-billboards-map__header').addClass('hidden');
+
+      $('.gm-style > div > div > div > div > div > img').on('click', function() {
+        // Showing the map header
+        $('.home-billboards-map__header').removeClass('hidden');
+      });
+    });
+  });
+
+  return allMarkers;
+}
+
+/**
+ * Removes all the markers from the map
+ *
+ * @param {Array} markers - An array of Google Map Markers
+ * @return {Array} markers - The same array put in but emptied
+ */
+function removeBillboardMarkers(markers) {
+  $.each(markers, (index, marker) => {
+    marker.setMap(null);
+  });
+
+  markers.length = 0;
+
+  return markers;
+}
+
+/**
+ * Builds the available locations list for the billboards map
+ *
+ * @param {Array} billboards - Array of billboard objects
+ */
+function buildAvailableLocations(billboards) {
+  $.each(billboards, (index, billboard) => {
+    $('.home__billboards ul').append(`<li><a href="#">${billboard.city}</a></li>`);
+  });
 }
