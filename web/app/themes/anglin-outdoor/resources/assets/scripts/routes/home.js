@@ -345,65 +345,201 @@ export default {
                 ]
       });
 
-    // Creating markers
-    const markerIcon = {
-            url:'/app/themes/anglin-outdoor/dist/images/circle.png',
-            anchor: new google.maps.Point(10, 10),
-          };
-    var markerInfoContent = `<div class="home-billboards-map__specs">
-        <h3>Idalou, Tx</h3>
-        <ul>
-          <li><span>Location:</span> SE Corner of HWYS 82/62 &amp; Main St.</li>
-          <li><span>Size:</span> 6'x12'</li>
-          <li><span>Impressions:</span> 68,500 Weekly</li>
-          <li><span>Lights:</span> No</li>
-        </ul>
-      </div>`;
-    var markerInfoWindow = new google.maps.InfoWindow({
-      content: markerInfoContent,
-    });
 
-    const billboard1 = new google.maps.Marker({
-      position: {lat: 33.9039, lng: -102.3196},
-      title: 'ATLA1',
-      icon: markerIcon,
-    });
-    const billboard2 = new google.maps.Marker({
-      position: {lat: 33.9041, lng: -102.3182},
-      title: 'ATLA2',
-      icon: markerIcon,
-    });
-    const billboard3 = new google.maps.Marker({
-      position: {lat: 33.9227, lng: -102.3249},
-      title: 'ATLA3',
-      icon: markerIcon,
-    });
-    const billboard4 = new google.maps.Marker({
-      position: {lat: 33.6665, lng: -101.6799},
-      title: 'ATLU1',
-      icon: markerIcon,
-    });
-    billboard4.addListener('click', function() {
-      markerInfoWindow.open(billboardsMap, billboard4);
-    });
-    const billboard5 = new google.maps.Marker({
-      position: {lat: 33.6443, lng: -101.9407},
-      title: 'ATLU2',
-      icon: markerIcon,
-    });
-    const billboard6 = new google.maps.Marker({
-      position: {lat: 33.4214, lng: -101.6442},
-      title: 'ATLU3',
-      icon: markerIcon,
-    });
+    // CREATING BILLBOARDS
+    const billboards = [
+      {
+        name: 'ATDW1',
+        market: 'This billboard is located on HWY 87 right in the middle of Lamesa TX. Great for traffic headed Southbound to Big Spring or San Angelo.',
+        image: 'ATDW1.jpg',
+        city: 'Lamesa',
+        state: 'Tx',
+        location: 'Lamesa, TX in between N 15th & N 16th St.',
+        lat: 32.7478139,
+        lng: -101.9540387,
+        gps: ['32°44\'52.13"N', '101°57\'6.66"W'],
+        position: 'Right Read',
+        size: '6x12',
+        illuminated: 'No',
+        faces: 2,
+        impressions: 86065
+      },
+      {
+        name: 'ATLA1',
+        market: 'This board is located on a busy US 84 in Littlefield TX. Great for westbound travelers to Littlefield, Muleshoe, & Clovis.',
+        image: 'ATLA1.jpg',
+        city: 'Littlefield',
+        state: 'Tx',
+        location: '1/2 Mile East of HWY 385',
+        lat: 33.9039,
+        lng: -102.3196,
+        gps: ['33°54\'14.26"N', '102°19\'5.62"W'],
+        position: 'Right Read',
+        size: '12x24',
+        illuminated: 'No',
+        faces: 4,
+        impressions: 60053
+      },
+      {
+        name: 'ATLA2',
+        market: 'This board is located on US 84 and located perfectly for a "next exit" sign to Littlefield, & Levelland, but also great for traffic to Muleshoe & Clovis.',
+        image: 'ATLA2.jpg',
+        city: 'Littlefield',
+        state: 'Tx',
+        location: '1/4 mile east of US 385 & US 84 Intersection',
+        lat: 33.9041,
+        lng: -102.3182,
+        gps: ['33°54\'14.85"N', '102°19\'10.69"W'],
+        position: 'Right Read',
+        size: '12x24',
+        illuminated: 'No',
+        faces: 4,
+        impressions: 60053
+      },
+      {
+        name: 'ATLA3',
+        market: 'This billboard is located in Littlefield, TX at the intersection of US 385 & Loop 430. This billboard is perfect for traffic headed to Dimmitt, Muleshoe, or Levelland.',
+        image: 'ATLA3.jpeg',
+        city: 'Littlefield',
+        state: 'Tx',
+        location: 'Intersection of US 385 & Loop 430',
+        lat: 33.9227,
+        lng: -102.3249,
+        gps: ['33°55\'21.56"N', '102°19\'29.80"W'],
+        position: 'Right Read',
+        size: '8x16',
+        illuminated: 'No',
+        faces: 4,
+        impressions: 18403
+      },
+      {
+        name: 'ATLU1',
+        market: '',
+        image: '',
+        city: 'Idalou',
+        state: 'Tx',
+        location: 'SE Corner of HWYS 82/62 & Main St.',
+        lat: 33.6665,
+        lng: -101.6799,
+        gps: [],
+        position: 'Right Read',
+        size: '6x12',
+        illuminated: 'No',
+        faces: 4,
+        impressions: 68500
+      },
+      {
+        name: 'ATLU2',
+        market: 'This billboard is located in Lubbock, TX at the intersection of Frankford Ave & US 84. This billboard is great for inbound traffic into Lubbock.',
+        image: 'ATLU2.jpg',
+        city: 'Lubbock',
+        state: 'Tx',
+        location: 'NW Corner of Intersection of US 84 & Frankford Ave',
+        lat: 33.6443,
+        lng: -101.9407,
+        gps: ['33°38\'39.71"N', '101°56\'26.55"W'],
+        position: 'Right Read',
+        size: '12x25',
+        illuminated: 'No',
+        faces: 2,
+        impressions: 106000
+      },
+      {
+        name: 'ATLU3',
+        market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Westbound traffic towards Lubbock, or Clovis.',
+        image: 'ATLU3.jpg',
+        city: 'Slaton',
+        state: 'Tx',
+        location: 'Northwest corner of US 84 & 9th st.',
+        lat: 33.4214,
+        lng: -101.6442,
+        gps: ['33°38\'39.71"N', '101°56\'26.55"W'],
+        position: 'Right Read',
+        size: '10x20',
+        illuminated: 'No',
+        faces: 4,
+        impressions: 98000
+      },
+      {
+        name: 'ATLY2',
+        market: 'This billboard is located on HWY 380 right next to Allsups and perfect for in-town traffic or traffic headed Westbound to Brownfield.',
+        image: 'ATLY2.jpg',
+        city: 'Tahoka',
+        state: 'Tx',
+        location: 'Tahoka, TX in between Ave L & M',
+        lat: 33.166347,
+        lng: -101.8032327,
+        gps: ['33°09\'58.9"N', '101°48\'03.8"W'],
+        position: 'Right Read',
+        size: '6x12',
+        illuminated: 'No',
+        faces: 2,
+        impressions: 20489
+      }
+    ];
 
-    // Setting markers to the map
-    billboard1.setMap(billboardsMap);
-    billboard2.setMap(billboardsMap);
-    billboard3.setMap(billboardsMap);
-    billboard4.setMap(billboardsMap);
-    billboard5.setMap(billboardsMap);
-    billboard6.setMap(billboardsMap);
+    // Going through billboards array and creating markers
+    $.each(billboards, (index, value) => {
+      // Setting the map icon
+      const markerIcon = {
+              url:'/app/themes/anglin-outdoor/dist/images/circle.png',
+              anchor: new google.maps.Point(10, 10),
+            };
+
+      // Creating the content for the info window
+      let markerInfoContent = `<div class="home-billboards-map__specs">`;
+      if (value.image !== '' || value.image !== null) {
+        markerInfoContent += `<img src="/app/themes/anglin-outdoor/dist/images/billboards/${value.image}" alt="${value.name}" />`;
+      }
+      markerInfoContent += `<h3>${value.city}, ${value.state}</h3>`;
+      if (value.market !== '' || value.market !== null) {
+        markerInfoContent += `<p>${value.market}</p>`;
+      }
+      markerInfoContent += `<ul>`;
+      markerInfoContent += `<li><span>Location:</span> ${value.location}</li>`;
+      if (value.gps[0] !== '' || value.gps[0] !== null) {
+        markerInfoContent += `<li><span>GPS:</span> ${value.gps[0]}, ${value.gps[1]}</li>`;
+      }
+      markerInfoContent += `<li><span>Size:</span> ${value.size}</li>`;
+      markerInfoContent += `<li><span>Faces:</span> ${value.faces}</li>`;
+      markerInfoContent += `<li><span>Impressions:</span> ${value.impressions} Weekly</li>`;
+      markerInfoContent += `<li><span>Illuminated:</span> ${value.illuminated}</li>`;
+      markerInfoContent += `</ul>`;
+      markerInfoContent += `<div class="home-billboards-map-specs__links">`;
+      markerInfoContent += `<a href="mailto:shawn@anglinoutdoor.com?subject=Billboard ${value.name} in ${value.city}, ${value.state}">Email</a>`;
+      markerInfoContent += `<a href="tel:8061234567">Call</a>`;
+      markerInfoContent += `</div>`;
+      markerInfoContent += `</div>`;
+
+      // Appending the content to the info window
+      const markerInfoWindow = new google.maps.InfoWindow({
+        content: markerInfoContent,
+      });
+
+      // Creating the marker for the map
+      const billboardMarker = new google.maps.Marker({
+        position: {lat: value.lat, lng: value.lng},
+        title: value.name,
+        icon: markerIcon,
+      });
+
+      // Putting the marker on the map
+      billboardMarker.setMap(billboardsMap);
+
+      // Adding the info window to the marker
+      billboardMarker.addListener('click', function() {
+        // Opening the popup window
+        markerInfoWindow.open(billboardsMap, billboardMarker);
+
+        // Hiding the maps header
+        $('.home-billboards-map__header').addClass('hidden');
+
+        $('.gm-style > div > div > div > div > div > img').on('click', function() {
+          // Showing the map header
+          $('.home-billboards-map__header').removeClass('hidden');
+        });
+      });
+    });
   },
 };
 
