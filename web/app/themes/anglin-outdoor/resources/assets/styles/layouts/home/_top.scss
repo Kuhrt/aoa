@@ -24,7 +24,6 @@
 
     @media (min-width: $breakpoint-desktop) {
       left: $page-margin-desktop;
-      transform: translateZ(75px);
     }
 
     @media (min-width: $breakpoint-desktop-large) {
@@ -52,7 +51,7 @@
       }
 
       @media (min-width: $breakpoint-desktop-large) {
-        padding-right: 55%;
+        padding-right: 50%;
       }
 
       @media (min-width: $breakpoint-desktop-huge) {

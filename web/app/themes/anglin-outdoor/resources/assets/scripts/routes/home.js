@@ -37,7 +37,7 @@ export default {
 
     // NAVIGATION
     // Brand Logo
-    $(".banner a.brand").on('click', e => {
+    $("a.brand").on('click', e => {
       e.preventDefault();
       $("html, body").animate({ scrollTop: 0 }, "slow");
     });
