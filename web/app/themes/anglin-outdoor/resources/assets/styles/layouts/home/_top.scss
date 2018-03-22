@@ -4,7 +4,6 @@
   height: 100vh;
   padding-left: $page-margin;
   overflow: hidden;
-  transform-style: preserve-3d;
   z-index: 1;
 
   @media (min-width: $breakpoint-tablet) {

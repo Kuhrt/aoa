@@ -1,5 +1,6 @@
 .home__billboards {
   padding: 10rem $page-margin $page-margin;
+  overflow: hidden;
 
   @media (min-width: $breakpoint-tablet) {
     padding: 15rem $page-margin-tablet $page-margin-tablet;

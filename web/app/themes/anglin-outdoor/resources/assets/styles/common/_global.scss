@@ -33,6 +33,8 @@ blockquote {
 html,
 body {
   background-color: inspect(map-get($theme-colors, yellow));
+  padding: 0;
+  margin: 0;
 }
 
 h1 {

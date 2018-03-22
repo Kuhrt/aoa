@@ -1,6 +1,7 @@
 .home__about {
   position: relative;
   padding-top: 10rem;
+  overflow: hidden;
 
   @media (min-width: $breakpoint-tablet) {
     padding-top: 16rem;
