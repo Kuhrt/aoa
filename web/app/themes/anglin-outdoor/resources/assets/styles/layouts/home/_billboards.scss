@@ -194,6 +194,14 @@
         max-width: 75vw;
         padding: 1rem 0.25rem 0.5rem 1.5rem;
 
+        @media (min-width: $breakpoint-tablet) {
+          max-width: 50vw;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          max-width: 20rem;
+        }
+
         img {
           position: relative;
           width: 100%;
