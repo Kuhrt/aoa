@@ -480,12 +480,28 @@ export default {
     // Initally adding markers to map
     let currentMarkers = addBillboardMarkers(billboardsMap, billboards);
 
+    // Building out the locations
     buildAvailableLocations(billboards);
 
+    // Move the map based on the location that's clicked
     $('.home__billboards ul li a').on('click', function(e) {
       e.preventDefault();
+      const location = { lat: $(this).data('billboard-lat'), lng: $(this).data('billboard-lng') };
 
-      removeBillboardMarkers(currentMarkers);
+      let zoomDistance = 13;
+
+      if ($(window).width() < 1200) {
+        zoomDistance = 11;
+        console.log(billboardsMap);
+        $('.home-billboards__map').animate({
+          left: '0%',
+        }, 300);
+      }
+
+      // Changing map location
+      newMapLocation(billboardsMap, location);
+      // Changing map zoom
+      billboardsMap.setZoom(zoomDistance);
     });
   },
 };
@@ -603,7 +619,60 @@ function removeBillboardMarkers(markers) {
  * @param {Array} billboards - Array of billboard objects
  */
 function buildAvailableLocations(billboards) {
+  // Array to hold available locations
+  let availableLocations = [];
+
+  // Going through each billboard and adding them to available locations
   $.each(billboards, (index, billboard) => {
-    $('.home__billboards ul').append(`<li><a href="#">${billboard.city}</a></li>`);
+    if (availableLocations.length === 0) {
+      // Adding the first location
+      availableLocations.push({city: billboard.city, coords: {lat: billboard.lat, lng: billboard.lng}, number: 1});
+    } else if (availableLocations.length > 0) {
+      // Variable to hold if the location needs to be pushed
+      let needsPushing = true;
+
+      // Seeing if the location already exists in availableLocations
+      $.each(availableLocations, (index, location) => {
+        // If it does, add a number and set needsPushing to false
+        if (location.city.toLowerCase() === billboard.city.toLowerCase()) {
+          // Add one to the number
+          availableLocations[index].number++;
+          // Doesn't need to be pushed so setting that variable to false
+          needsPushing = false;
+        }
+      });
+
+      // If location needs to be pushed, push it
+      if (needsPushing) {
+        availableLocations.push({city: billboard.city, coords: {lat: billboard.lat, lng: billboard.lng}, number: 1});
+      }
+    }
   });
+
+  // Sorting the list alphabetically
+  availableLocations.sort(sortByCity);
+
+  // Appending the list of locations to the billboards list
+  $.each(availableLocations, (index, location) => {
+    $('.home__billboards ul').append(`<li><a href="#" data-billboard-lat="${location.coords.lat}" data-billboard-lng="${location.coords.lng}">${location.city} (${location.number})</a></li>`);
+  });
+}
+
+/**
+ * Change the map to a new location
+ *
+ * @param {Object} map      - Google Maps map object
+ * @param {Object} location - Object with lat and lng
+ */
+function newMapLocation(map, location) {
+  map.setCenter(location);
+}
+
+/**
+ * Sorts an array of objects by city
+ */
+function sortByCity(a, b) {
+  const aCity = a.city.toLowerCase();
+  const bCity = b.city.toLowerCase();
+  return ((aCity < bCity) ? -1 : ((aCity > bCity) ? 1 : 0));
 }
