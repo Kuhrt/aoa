@@ -22,6 +22,35 @@
       margin-bottom: 0;
     }
 
+    .home-contact__image {
+      position: relative;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 33%;
+      margin-bottom: 2rem;
+      border-radius: 50%;
+
+      @media (min-width: 375px) {
+        width: 50%;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        width: 25%;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        width: 12rem;
+      }
+
+      &::after {
+        content: '';
+        position: relative;
+        display: block;
+        padding-top: 100%;
+      }
+    }
+
     h2 {
       color: inspect(map-get($theme-colors, black));
       font-size: 4.063rem;

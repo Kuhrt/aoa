@@ -191,6 +191,7 @@
       z-index: 1;
 
       .home-billboards-map__specs {
+        position: relative;
         width: 100%;
         max-width: 75vw;
         padding: 1rem 0.25rem 0.5rem 1.5rem;
@@ -203,47 +204,98 @@
           max-width: 20rem;
         }
 
-        img {
+        .home-billboards-map-spec__side {
           position: relative;
           width: 100%;
-          margin-bottom: 1rem;
-        }
+          height: 100%;
 
-        ul {
-          margin: 0.5rem 0;
+          img {
+            position: relative;
+            width: 100%;
+            margin-bottom: 1rem;
+          }
 
-          li {
-            font-size: 0.85rem;
-            line-height: 1.5;
+          .home-billboards-map-specs__header {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin-bottom: 0.5rem;
 
-            span {
-              font-size: 1rem;
-              font-weight: 700;
+            h3 {
+              display: inline-block;
+              line-height: 1;
+              width: 75%;
+              margin-bottom: 0;
+            }
+
+            .home-billboards-map-specs-header__arrows {
+              display: inline-block;
+              text-align: right;
+              width: 25%;
+
+              button {
+                background-color: transparent;
+                font-size: 1.75rem;
+                font-weight: 700;
+                line-height: 1;
+                border: none;
+
+                &:hover {
+                  cursor: pointer;
+                }
+
+                &:focus {
+                  outline: none;
+                }
+
+                &:first-child {
+                  padding-left: 0;
+                  margin-right: 0.75rem;
+                }
+
+                &:last-child {
+                  padding-right: 0;
+                }
+              }
             }
           }
-        }
 
-        .home-billboards-map-specs__links {
-          display: flex;
-          justify-content: space-around;
-          width: 100%;
-          padding: 0.75rem 0 0;
+          ul {
+            margin: 0.5rem 0;
 
-          @media (min-width: $breakpoint-desktop) {
-            padding: 1.25rem 0 1rem;
+            li {
+              font-size: 0.85rem;
+              line-height: 1.5;
+
+              span {
+                font-size: 1rem;
+                font-weight: 700;
+              }
+            }
           }
 
-          a {
-            color: inspect(map-get($theme-colors, yellow));
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1;
-            padding: 0;
-            margin: 0;
+          .home-billboards-map-specs__links {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 0.75rem 0 0;
 
-            &:hover {
-              color: inspect(map-get($theme-colors, black));
-              text-decoration: none;
+            @media (min-width: $breakpoint-desktop) {
+              padding: 1.25rem 0 1rem;
+            }
+
+            a {
+              color: inspect(map-get($theme-colors, yellow));
+              font-size: 1.25rem;
+              font-weight: 700;
+              line-height: 1;
+              padding: 0;
+              margin: 0;
+
+              &:hover {
+                color: inspect(map-get($theme-colors, black));
+                text-decoration: none;
+              }
             }
           }
         }

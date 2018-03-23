@@ -79,7 +79,7 @@
   font-weight: 500;
   text-transform: uppercase;
   line-height: 1;
-  width: 4rem;
+  width: 5.7rem;
   z-index: 10;
 
   @media (min-width: $breakpoint-tablet) {
@@ -90,11 +90,11 @@
   @media (min-width: $breakpoint-desktop) {
     top: $page-margin-desktop;
     right: $page-margin-desktop;
-    width: 6rem;
+    width: 10rem;
   }
 
   @media (min-width: $breakpoint-desktop) and (max-height: 899px) {
-    width: 4.5rem;
+    width: 10rem;
   }
 
   &:hover {

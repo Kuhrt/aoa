@@ -54,8 +54,10 @@
       $contact_post = get_post(7);
       $contact_content = $contact_post->post_content;
       $contact_content = apply_filters('the_content', $contact_content);
+      $contact_image = get_the_post_thumbnail_url(7, 'large');
     @endphp
     <div class="home-contact__text">
+      <div class="home-contact__image" style="background-image:url('{{ $contact_image }}');"></div>
       @php
         echo $contact_content;
       @endphp

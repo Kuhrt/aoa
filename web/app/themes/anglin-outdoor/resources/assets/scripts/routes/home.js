@@ -2,6 +2,7 @@
 import Hammer from 'hammerjs';
 import 'waypoints/lib/jquery.waypoints.min.js';
 import 'tilt.js';
+import Slick from 'slick-carousel';
 
 export default {
   init() {
@@ -350,133 +351,236 @@ export default {
     const billboards = [
       {
         name: 'ATDW1',
-        market: 'This billboard is located on HWY 87 right in the middle of Lamesa TX. Great for traffic headed Southbound to Big Spring or San Angelo.',
-        image: 'ATDW1.jpg',
         city: 'Lamesa',
+        county: 'Dawson',
         state: 'Tx',
         location: 'Lamesa, TX in between N 15th & N 16th St.',
         lat: 32.7478139,
         lng: -101.9540387,
         gps: ['32°44\'52.13"N', '101°57\'6.66"W'],
-        position: 'Right Read',
         size: '6x12',
+        impressions: 86065,
         illuminated: 'No',
-        faces: 2,
-        impressions: 86065
+        sides: [
+          {
+            name: 'Side A',
+            market: 'This billboard is located on HWY 87 right in the middle of Lamesa TX. Great for traffic headed Southbound to Big Spring or San Angelo.',
+            image: 'ATDW1A.jpg',
+            position: 'Right Read',
+            faces: 1
+          },
+          {
+            name: 'Side B',
+            market: 'This billboard is located on HWY 87 right in the middle of Lamesa TX. Great for traffic headed Northbound to Lubbock.',
+            image: 'ATDW1B.jpg',
+            position: 'Cross Read',
+            faces: 1
+          }
+        ]
       },
       {
         name: 'ATLA1',
-        market: 'This board is located on a busy US 84 in Littlefield TX. Great for westbound travelers to Littlefield, Muleshoe, & Clovis.',
-        image: 'ATLA1.jpg',
         city: 'Littlefield',
+        county: 'Lamb',
         state: 'Tx',
         location: '1/2 Mile East of HWY 385',
         lat: 33.9039,
         lng: -102.3196,
         gps: ['33°54\'14.26"N', '102°19\'5.62"W'],
-        position: 'Right Read',
         size: '12x24',
         illuminated: 'No',
-        faces: 4,
-        impressions: 60053
+        impressions: 60053,
+        sides: [
+          {
+            name: 'Side A/B',
+            market: 'This board is located on a busy US 84 in Littlefield TX. Great for westbound travelers to Littlefield, Muleshoe, & Clovis.',
+            image: 'ATLA1AB.jpg',
+            position: 'Right Read',
+            faces: 2
+          },
+          {
+            name: 'Side C/D',
+            market: 'This board is located on a busy US 84 in Littlefield TX. Great for eastbound travelers to Littlefield, Lubbock, Post or Abilene.',
+            image: 'ATLA1CD.jpeg',
+            position: 'Cross Read',
+            faces: 2
+          }
+        ]
       },
       {
         name: 'ATLA2',
-        market: 'This board is located on US 84 and located perfectly for a "next exit" sign to Littlefield, & Levelland, but also great for traffic to Muleshoe & Clovis.',
-        image: 'ATLA2.jpg',
         city: 'Littlefield',
+        county: 'Lamb',
         state: 'Tx',
         location: '1/4 mile east of US 385 & US 84 Intersection',
         lat: 33.9041,
         lng: -102.3182,
         gps: ['33°54\'14.85"N', '102°19\'10.69"W'],
-        position: 'Right Read',
         size: '12x24',
         illuminated: 'No',
-        faces: 4,
-        impressions: 60053
+        impressions: 60053,
+        sides: [
+          {
+            name: 'Side A/B',
+            market: 'This board is located on US 84 and located perfectly for a "next exit" sign to Littlefield, & Levelland, but also great for traffic to Muleshoe & Clovis.',
+            image: 'ATLA2AB.jpg',
+            position: 'Right Read',
+            faces: 2
+          },
+          {
+            name: 'Side C/D',
+            market: 'This board is on US 84 and great for eastbound traffic to Littlefield, Shallowater, & Lubbock.',
+            image: 'ATLA2CD.jpg',
+            position: 'Cross Read',
+            faces: 2
+          }
+        ]
       },
       {
         name: 'ATLA3',
-        market: 'This billboard is located in Littlefield, TX at the intersection of US 385 & Loop 430. This billboard is perfect for traffic headed to Dimmitt, Muleshoe, or Levelland.',
-        image: 'ATLA3.jpeg',
         city: 'Littlefield',
+        county: 'Lamb',
         state: 'Tx',
         location: 'Intersection of US 385 & Loop 430',
         lat: 33.9227,
         lng: -102.3249,
         gps: ['33°55\'21.56"N', '102°19\'29.80"W'],
-        position: 'Right Read',
         size: '8x16',
         illuminated: 'No',
-        faces: 4,
-        impressions: 18403
+        impressions: 18403,
+        sides: [
+          {
+            name: 'Side A/B',
+            market: 'This billboard is located in Littlefield, TX at the intersection of US 385 & Loop 430. This billboard is perfect for traffic headed to Dimmitt, Muleshoe, or Levelland.',
+            image: 'ATLA3AB.jpg',
+            position: 'Right Read',
+            faces: 2
+          },
+          {
+            name: 'Side C/D',
+            market: 'This board is located at the busy intersection of US 385 & Loop 430. Great truck traffic going to Lubbock, Littlefield, & Levelland.',
+            image: 'ATLA3CD.jpg',
+            position: 'Cross Read',
+            faces: 2
+          }
+        ]
       },
       {
         name: 'ATLU1',
-        market: '',
-        image: '',
         city: 'Idalou',
         state: 'Tx',
         location: 'SE Corner of HWYS 82/62 & Main St.',
         lat: 33.6665,
         lng: -101.6799,
         gps: [],
-        position: 'Right Read',
         size: '6x12',
         illuminated: 'No',
-        faces: 4,
-        impressions: 68500
+        impressions: 68500,
+        sides: [
+          {
+            name: 'Side A/B',
+            market: '',
+            image: '',
+            position: 'Right Read',
+            faces: 2
+          },
+          {
+            name: 'Side C/D',
+            market: '',
+            image: '',
+            position: 'Cross Read',
+            faces: 2
+          }
+        ]
       },
       {
         name: 'ATLU2',
-        market: 'This billboard is located in Lubbock, TX at the intersection of Frankford Ave & US 84. This billboard is great for inbound traffic into Lubbock.',
-        image: 'ATLU2.jpg',
         city: 'Lubbock',
+        county: 'Lubbock',
         state: 'Tx',
         location: 'NW Corner of Intersection of US 84 & Frankford Ave',
         lat: 33.6443,
         lng: -101.9407,
         gps: ['33°38\'39.71"N', '101°56\'26.55"W'],
-        position: 'Right Read',
         size: '12x25',
         illuminated: 'No',
-        faces: 2,
-        impressions: 106000
+        impressions: 106000,
+        sides: [
+          {
+            name: 'Side A',
+            market: 'This billboard is located in Lubbock, TX at the intersection of Frankford Ave & US 84. This billboard is great for inbound traffic into Lubbock.',
+            image: 'ATLU2A.jpg',
+            position: 'Right Read',
+            faces: 1
+          },
+          {
+            name: 'Side B',
+            market: 'This billboard is located in Lubbock, TX at the intersection of Frankford Ave & US 84. This billboard is great for Lubbock traffic as well as westbound traffic to Shallowater, Littlefield or Clovis',
+            image: 'ATLU2B.jpg',
+            position: 'Cross Read',
+            faces: 1
+          }
+        ]
       },
       {
         name: 'ATLU3',
-        market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Westbound traffic towards Lubbock, or Clovis.',
-        image: 'ATLU3.jpg',
         city: 'Slaton',
         state: 'Tx',
         location: 'Northwest corner of US 84 & 9th st.',
         lat: 33.4214,
         lng: -101.6442,
         gps: ['33°38\'39.71"N', '101°56\'26.55"W'],
-        position: 'Right Read',
         size: '10x20',
-        illuminated: 'No',
-        faces: 4,
-        impressions: 98000
+        illuminated: 'Yes',
+        impressions: 98000,
+        sides: [
+          {
+            name: 'Side A/B',
+            market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Westbound traffic towards Lubbock, or Clovis.',
+            image: 'ATLU3AB.jpg',
+            position: 'Right Read',
+            faces: 2
+          },
+          {
+            name: 'Side C/D',
+            market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Eastbound traffic towards Post, or Snyder.',
+            image: 'ATLU3CD.jpg',
+            position: 'Cross Read',
+            faces: 2
+          }
+        ]
       },
       {
         name: 'ATLY2',
-        market: 'This billboard is located on HWY 380 right next to Allsups and perfect for in-town traffic or traffic headed Westbound to Brownfield.',
-        image: 'ATLY2.jpg',
         city: 'Tahoka',
+        county: 'Lynn',
         state: 'Tx',
         location: 'Tahoka, TX in between Ave L & M',
         lat: 33.166347,
         lng: -101.8032327,
         gps: ['33°09\'58.9"N', '101°48\'03.8"W'],
-        position: 'Right Read',
         size: '6x12',
         illuminated: 'No',
-        faces: 2,
-        impressions: 20489
+        impressions: 20489,
+        sides: [
+          {
+            name: 'Side A',
+            market: 'This billboard is located on HWY 380 right next to Allsups and perfect for in-town traffic or traffic headed Westbound to Brownfield.',
+            image: 'ATLY2A.jpg',
+            position: 'Right Read',
+            faces: 1
+          },
+          {
+            name: 'Side B',
+            market: 'This billboard is located on HWY 380 right next to Allsups and perfect for in-town traffic or traffic headed Eastbound to Post.',
+            image: 'ATLY2B.jpg',
+            position: 'Cross Read',
+            faces: 1
+          }
+        ]
       }
     ];
+
     // Initally adding markers to map
     let currentMarkers = addBillboardMarkers(billboardsMap, billboards);
 
@@ -528,7 +632,7 @@ function addBillboardMarkers(map, billboards) {
   let allMarkers = [];
 
   // Going through billboards array and creating markers
-  $.each(billboards, (index, value) => {
+  $.each(billboards, (index, billboard) => {
     // Setting the map icon
     const markerIcon = {
             url:'/app/themes/anglin-outdoor/dist/images/circle.png',
@@ -537,27 +641,40 @@ function addBillboardMarkers(map, billboards) {
 
     // Creating the content for the info window
     let markerInfoContent = `<div class="home-billboards-map__specs">`;
-    if (value.image !== '' && value.image !== null) {
-      markerInfoContent += `<img src="/app/themes/anglin-outdoor/dist/images/billboards/${value.image}" alt="${value.name}" />`;
-    }
-    markerInfoContent += `<h3>${value.city}, ${value.state}</h3>`;
-    if (value.market !== '' && value.market !== null) {
-      markerInfoContent += `<p>${value.market}</p>`;
-    }
-    markerInfoContent += `<ul>`;
-    markerInfoContent += `<li><span>Location:</span> ${value.location}</li>`;
-    if (value.gps.length !== 0) {
-      markerInfoContent += `<li><span>GPS:</span> ${value.gps[0]}, ${value.gps[1]}</li>`;
-    }
-    markerInfoContent += `<li><span>Size:</span> ${value.size}</li>`;
-    markerInfoContent += `<li><span>Faces:</span> ${value.faces}</li>`;
-    markerInfoContent += `<li><span>Impressions:</span> ${value.impressions} Weekly</li>`;
-    markerInfoContent += `<li><span>Illuminated:</span> ${value.illuminated}</li>`;
-    markerInfoContent += `</ul>`;
-    markerInfoContent += `<div class="home-billboards-map-specs__links">`;
-    markerInfoContent += `<a href="mailto:shawn@anglinoutdoor.com?subject=Billboard ${value.name} in ${value.city}, ${value.state}">Email</a>`;
-    markerInfoContent += `<a href="tel:8061234567">Call</a>`;
-    markerInfoContent += `</div>`;
+
+    // Creating a slide for each billboard side
+    $.each(billboard.sides, (index, side) => {
+      markerInfoContent += `<div class="home-billboards-map-spec__side">`;
+      if (side.image !== '' && side.image !== null) {
+        markerInfoContent += `<img src="/app/themes/anglin-outdoor/dist/images/billboards/${side.image}" alt="${side.name}" />`;
+      }
+      markerInfoContent += `<div class="home-billboards-map-specs__header">`;
+      markerInfoContent += `<h3>${side.name}</h3>`;
+      markerInfoContent += `<div class="home-billboards-map-specs-header__arrows">`;
+      markerInfoContent += `<button class="home-billboards-map-specs-header-arrows__prev"><</button>`;
+      markerInfoContent += `<button class="home-billboards-map-specs-header-arrows__next">></button>`;
+      markerInfoContent += `</div>`;
+      markerInfoContent += `</div>`;
+      if (side.market !== '' && side.market !== null) {
+        markerInfoContent += `<p>${side.market}</p>`;
+      }
+      markerInfoContent += `<ul>`;
+      markerInfoContent += `<li><span>Location:</span> ${billboard.location}</li>`;
+      if (billboard.gps.length !== 0) {
+        markerInfoContent += `<li><span>GPS:</span> ${billboard.gps[0]}, ${billboard.gps[1]}</li>`;
+      }
+      markerInfoContent += `<li><span>Size:</span> ${billboard.size}</li>`;
+      markerInfoContent += `<li><span>Faces:</span> ${side.faces}</li>`;
+      markerInfoContent += `<li><span>Position:</span> ${side.position}</li>`;
+      markerInfoContent += `<li><span>Impressions:</span> ${billboard.impressions} Weekly</li>`;
+      markerInfoContent += `<li><span>Illuminated:</span> ${billboard.illuminated}</li>`;
+      markerInfoContent += `</ul>`;
+      markerInfoContent += `<div class="home-billboards-map-specs__links">`;
+      markerInfoContent += `<a href="mailto:shawn@anglinoutdoor.com?subject=Billboard ${billboard.name} in ${billboard.city}, ${billboard.state}">Email</a>`;
+      markerInfoContent += `<a href="tel:8061234567">Call</a>`;
+      markerInfoContent += `</div>`;
+      markerInfoContent += `</div>`;
+    });
     markerInfoContent += `</div>`;
 
     // Appending the content to the info window
@@ -567,8 +684,8 @@ function addBillboardMarkers(map, billboards) {
 
     // Creating the marker for the map
     const billboardMarker = new google.maps.Marker({
-      position: {lat: value.lat, lng: value.lng},
-      title: value.name,
+      position: {lat: billboard.lat, lng: billboard.lng},
+      title: billboard.name,
       icon: markerIcon,
       animation: google.maps.Animation.DROP,
     });
@@ -584,6 +701,18 @@ function addBillboardMarkers(map, billboards) {
       // Opening the popup window
       markerInfoWindow.open(map, billboardMarker);
 
+      // Setting a listener to when the window is created and making it a slider
+      google.maps.event.addListenerOnce(markerInfoWindow, 'domready', function() {
+        const sideSlider = $('#map').find('.home-billboards-map__specs');
+
+        // Only initializing windows that aren't already initialized
+        $.each(sideSlider, (index, slider) => {
+          if (!$(slider).hasClass('slick-initialized')) {
+            initBillboardSlides($(slider));
+          }
+        });
+      })
+
       // Hiding the maps header
       $('.home-billboards-map__header').addClass('hidden');
 
@@ -592,6 +721,16 @@ function addBillboardMarkers(map, billboards) {
         $('.home-billboards-map__header').removeClass('hidden');
       });
     });
+  });
+
+  // Setting watchers for previous and next buttons
+  $('#map').on('click', '.home-billboards-map-specs-header__arrows .home-billboards-map-specs-header-arrows__prev', function(e) {
+    const slider = $(this).closest('.slick-initialized');
+    slider.slick('slickPrev');
+  });
+  $('#map').on('click', '.home-billboards-map-specs-header__arrows .home-billboards-map-specs-header-arrows__next', function(e) {
+    const slider = $(this).closest('.slick-initialized');
+    slider.slick('slickNext');
   });
 
   return allMarkers;
@@ -655,6 +794,16 @@ function buildAvailableLocations(billboards) {
   // Appending the list of locations to the billboards list
   $.each(availableLocations, (index, location) => {
     $('.home__billboards ul').append(`<li><a href="#" data-billboard-lat="${location.coords.lat}" data-billboard-lng="${location.coords.lng}">${location.city} (${location.number})</a></li>`);
+  });
+}
+
+/**
+ * Turning billboard sides into sliders
+ *
+ */
+function initBillboardSlides(billboard) {
+  billboard.slick({
+    arrows: false
   });
 }
 
