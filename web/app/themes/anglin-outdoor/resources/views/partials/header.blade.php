@@ -6,4 +6,4 @@
   </nav>
 </header>
 
-<a class="brand" href="#"><img src="@asset('images/AOA-letters.svg')" alt="Anglin Outdoor Advertising" /></a>
+<a class="brand" href="#"><img src="@asset('images/AOA-logo.svg')" alt="Anglin Outdoor Advertising" /></a>
