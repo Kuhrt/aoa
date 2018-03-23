@@ -58,9 +58,11 @@
     @endphp
     <div class="home-contact__text">
       <div class="home-contact__image" style="background-image:url('{{ $contact_image }}');"></div>
-      @php
-        echo $contact_content;
-      @endphp
+      <div class="home-contact-text__content">
+        @php
+          echo $contact_content;
+        @endphp
+      </div>
     </div>
   </section>
 @endsection
