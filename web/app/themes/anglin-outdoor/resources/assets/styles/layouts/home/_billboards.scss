@@ -222,19 +222,19 @@
             margin-bottom: 0.5rem;
 
             h3 {
-              display: inline-block;
+              display: block;
               line-height: 1;
-              width: 73%;
+              width: 65%;
               margin-bottom: 0;
             }
 
             .home-billboards-map-specs-header__arrows {
               display: flex;
+              justify-content: flex-end;
               text-align: right;
-              width: 26%;
+              width: 35%;
 
               button {
-                display: block;
                 background-color: transparent;
                 font-size: 1.75rem;
                 font-weight: 700;
