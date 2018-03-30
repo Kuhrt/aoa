@@ -19,8 +19,9 @@ export default {
         }, 300);
       }
     });
-    hammertime.on('swiperight', function() {
-      if ($(window).width() < 960) {
+    hammertime.on('swiperight', function(e) {
+      // If this is mobile and if they didn't swipe on a billboard card
+      if ($(window).width() < 960 && $(e.target).closest('.home-billboards-map__specs').length === 0) {
         map.animate({
           left: '100%',
         }, 300);
@@ -387,7 +388,7 @@ export default {
         lat: 33.9039,
         lng: -102.3196,
         gps: ['33°54\'14.26"N', '102°19\'5.62"W'],
-        size: '12x24',
+        size: '12x25',
         illuminated: 'No',
         impressions: 60053,
         sides: [
@@ -416,7 +417,7 @@ export default {
         lat: 33.9041,
         lng: -102.3182,
         gps: ['33°54\'14.85"N', '102°19\'10.69"W'],
-        size: '12x24',
+        size: '12x25',
         illuminated: 'No',
         impressions: 60053,
         sides: [
@@ -503,7 +504,7 @@ export default {
         lng: -101.9407,
         gps: ['33°38\'39.71"N', '101°56\'26.55"W'],
         size: '12x25',
-        illuminated: 'No',
+        illuminated: 'Yes',
         impressions: 106000,
         sides: [
           {
@@ -536,14 +537,14 @@ export default {
         sides: [
           {
             name: 'Side A/B',
-            market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Westbound traffic towards Lubbock, or Clovis.',
+            market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Eastbound traffic towards Post, or Snyder.',
             image: 'ATLU3AB.jpg',
             position: 'Right Read',
             faces: 2
           },
           {
             name: 'Side C/D',
-            market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Eastbound traffic towards Post, or Snyder.',
+            market: 'This billboard is located on US 84 in Slaton, TX. This is perfect for Westbound traffic towards Lubbock, or Clovis.',
             image: 'ATLU3CD.jpg',
             position: 'Cross Read',
             faces: 2
@@ -638,44 +639,45 @@ function addBillboardMarkers(map, billboards) {
             url:'/app/themes/anglin-outdoor/dist/images/circle.png',
             anchor: new google.maps.Point(10, 10),
           };
+    const billboardName = billboard.name;
 
     // Creating the content for the info window
-    let markerInfoContent = `<div class="home-billboards-map__specs">`;
+    let markerInfoContent = '<div class="home-billboards-map__specs">';
 
     // Creating a slide for each billboard side
     $.each(billboard.sides, (index, side) => {
-      markerInfoContent += `<div class="home-billboards-map-spec__side">`;
+      markerInfoContent += '<div class="home-billboards-map-spec__side">';
       if (side.image !== '' && side.image !== null) {
-        markerInfoContent += `<img src="/app/themes/anglin-outdoor/dist/images/billboards/${side.image}" alt="${side.name}" />`;
+        markerInfoContent += '<img src="/app/themes/anglin-outdoor/dist/images/billboards/' + side.image + '" alt="' + side.name + '" />';
       }
-      markerInfoContent += `<div class="home-billboards-map-specs__header">`;
-      markerInfoContent += `<h3>${side.name}</h3>`;
-      markerInfoContent += `<div class="home-billboards-map-specs-header__arrows">`;
-      markerInfoContent += `<button class="home-billboards-map-specs-header-arrows__prev"><</button>`;
-      markerInfoContent += `<button class="home-billboards-map-specs-header-arrows__next">></button>`;
-      markerInfoContent += `</div>`;
-      markerInfoContent += `</div>`;
+      markerInfoContent += '<div class="home-billboards-map-specs__header">';
+      markerInfoContent += '<h3>' + billboardName + ' - ' + side.name + '</h3>';
+      markerInfoContent += '<div class="home-billboards-map-specs-header__arrows">';
+      markerInfoContent += '<button class="home-billboards-map-specs-header-arrows__prev"><</button>';
+      markerInfoContent += '<button class="home-billboards-map-specs-header-arrows__next">></button>';
+      markerInfoContent += '</div>';
+      markerInfoContent += '</div>';
       if (side.market !== '' && side.market !== null) {
-        markerInfoContent += `<p>${side.market}</p>`;
+        markerInfoContent += '<p>' + side.market + '</p>';
       }
-      markerInfoContent += `<ul>`;
-      markerInfoContent += `<li><span>Location:</span> ${billboard.location}</li>`;
+      markerInfoContent += '<ul>';
+      markerInfoContent += '<li><span>Location:</span> ' + billboard.location + '</li>';
       if (billboard.gps.length !== 0) {
-        markerInfoContent += `<li><span>GPS:</span> ${billboard.gps[0]}, ${billboard.gps[1]}</li>`;
+        markerInfoContent += '<li><span>GPS:</span> ' + billboard.gps[0] + ', ' + billboard.gps[1] + '</li>';
       }
-      markerInfoContent += `<li><span>Size:</span> ${billboard.size}</li>`;
-      markerInfoContent += `<li><span>Faces:</span> ${side.faces}</li>`;
-      markerInfoContent += `<li><span>Position:</span> ${side.position}</li>`;
-      markerInfoContent += `<li><span>Impressions:</span> ${billboard.impressions} Weekly</li>`;
-      markerInfoContent += `<li><span>Illuminated:</span> ${billboard.illuminated}</li>`;
-      markerInfoContent += `</ul>`;
-      markerInfoContent += `<div class="home-billboards-map-specs__links">`;
-      markerInfoContent += `<a href="mailto:shawn@anglinoutdoor.com?subject=Billboard ${billboard.name} in ${billboard.city}, ${billboard.state}">Email</a>`;
-      markerInfoContent += `<a href="tel:8061234567">Call</a>`;
-      markerInfoContent += `</div>`;
-      markerInfoContent += `</div>`;
+      markerInfoContent += '<li><span>Size:</span> ' + billboard.size + '</li>';
+      markerInfoContent += '<li><span>Faces:</span>  ' + side.faces + '</li>';
+      markerInfoContent += '<li><span>Position:</span> ' + side.position + '</li>';
+      markerInfoContent += '<li><span>Impressions:</span> ' + billboard.impressions + ' Weekly</li>';
+      markerInfoContent += '<li><span>Illuminated:</span> ' + billboard.illuminated + '</li>';
+      markerInfoContent += '</ul>';
+      markerInfoContent += '<div class="home-billboards-map-specs__links">';
+      markerInfoContent += '<a href="mailto:shawn@anglinoutdoor.com?subject=Billboard ' + billboard.name + ' in ' + billboard.city + ', ' + billboard.state + '">Email</a>';
+      markerInfoContent += '<a href="tel:8061234567">Call</a>';
+      markerInfoContent += '</div>';
+      markerInfoContent += '</div>';
     });
-    markerInfoContent += `</div>`;
+    markerInfoContent += '</div>';
 
     // Appending the content to the info window
     const markerInfoWindow = new google.maps.InfoWindow({
@@ -793,7 +795,7 @@ function buildAvailableLocations(billboards) {
 
   // Appending the list of locations to the billboards list
   $.each(availableLocations, (index, location) => {
-    $('.home__billboards ul').append(`<li><a href="#" data-billboard-lat="${location.coords.lat}" data-billboard-lng="${location.coords.lng}">${location.city} (${location.number})</a></li>`);
+    $('.home__billboards ul').append('<li><a href="#" data-billboard-lat="' + location.coords.lat + '" data-billboard-lng="' + location.coords.lng + '">' + location.city + ' (' + location.number + ')</a></li>');
   });
 }
 
