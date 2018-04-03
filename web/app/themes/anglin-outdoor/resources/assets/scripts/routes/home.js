@@ -648,7 +648,7 @@ function addBillboardMarkers(map, billboards) {
     $.each(billboard.sides, (index, side) => {
       markerInfoContent += '<div class="home-billboards-map-spec__side">';
       if (side.image !== '' && side.image !== null) {
-        markerInfoContent += '<img src="' + require('images/billboards/' + side.image) + '" alt="' + side.name + '" />';
+        markerInfoContent += '<img src="/wp-content/themes/anglin-outdoor/dist/images/billboards/' + side.image + '" alt="' + side.name + '" />';
       }
       markerInfoContent += '<div class="home-billboards-map-specs__header">';
       markerInfoContent += '<h3>' + billboardName + ' - ' + side.name + '</h3>';
