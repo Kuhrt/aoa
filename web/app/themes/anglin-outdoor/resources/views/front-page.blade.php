@@ -17,10 +17,20 @@
   @endwhile
   <section class="home__about" id="about">
     @php
-      $about_post = get_post(9);
-      $about_content = $about_post->post_content;
-      $about_content = apply_filters('the_content', $about_content);
-      $about_image = get_the_post_thumbnail_url(9, 'large');
+      $about_slug = 'about';
+      $about_args = array(
+        'name'        => $about_slug,
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1
+      );
+      $about_posts = get_posts($about_args);
+      if( $about_posts ) :
+        $about_post = get_post($about_posts[0]->ID);
+        $about_content = $about_post->post_content;
+        $about_content = apply_filters('the_content', $about_content);
+        $about_image = get_the_post_thumbnail_url($about_posts[0]->ID, 'large');
+      endif;
     @endphp
     <div class="home-about__image" style="background-image:url('{{ $about_image }}');"></div>
     <div class="home-about__text">
@@ -51,10 +61,20 @@
 
   <section class="home__contact" id="contact">
     @php
-      $contact_post = get_post(7);
-      $contact_content = $contact_post->post_content;
-      $contact_content = apply_filters('the_content', $contact_content);
-      $contact_image = get_the_post_thumbnail_url(7, 'large');
+      $contact_slug = 'contact';
+      $contact_args = array(
+        'name'        => $contact_slug,
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1
+      );
+      $contact_posts = get_posts($contact_args);
+      if( $contact_posts ) :
+        $contact_post = get_post($contact_posts[0]->ID);
+        $contact_content = $contact_post->post_content;
+        $contact_content = apply_filters('the_content', $contact_content);
+        $contact_image = get_the_post_thumbnail_url($contact_posts[0]->ID, 'large');
+      endif;
     @endphp
     <div class="home-contact__text">
       <div class="home-contact__image" style="background-image:url('{{ $contact_image }}');"></div>

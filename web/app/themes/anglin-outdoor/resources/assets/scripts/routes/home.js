@@ -636,7 +636,7 @@ function addBillboardMarkers(map, billboards) {
   $.each(billboards, (index, billboard) => {
     // Setting the map icon
     const markerIcon = {
-            url:'/app/themes/anglin-outdoor/dist/images/circle.png',
+            url: require('images/circle.png'),
             anchor: new google.maps.Point(10, 10),
           };
     const billboardName = billboard.name;
@@ -648,7 +648,7 @@ function addBillboardMarkers(map, billboards) {
     $.each(billboard.sides, (index, side) => {
       markerInfoContent += '<div class="home-billboards-map-spec__side">';
       if (side.image !== '' && side.image !== null) {
-        markerInfoContent += '<img src="/app/themes/anglin-outdoor/dist/images/billboards/' + side.image + '" alt="' + side.name + '" />';
+        markerInfoContent += '<img src="' + require('images/billboards/' + side.image) + '" alt="' + side.name + '" />';
       }
       markerInfoContent += '<div class="home-billboards-map-specs__header">';
       markerInfoContent += '<h3>' + billboardName + ' - ' + side.name + '</h3>';
